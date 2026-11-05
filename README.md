@@ -166,6 +166,19 @@ The SQL analysis will demonstrate:
 
 ---
 
+### SQL dimensional model — Designed
+
+A star schema has been defined for the warehouse layer:
+
+- Fact table: `dw.FactSales` (one row per order line / `Row_ID`).
+- Dimensions: Date, Customer, Product, Location and Ship Mode.
+- SQL DDL: `sql/07_create_star_schema.sql`.
+- Model documentation: `documentation/data_model.md`.
+
+The DDL creates the tables and relationships but does not load data yet. ETL development and reconciliation are pending.
+
+---
+
 # 8. Power BI — Planned
 
 The Power BI dashboard will be developed after validating the SQL analysis.
@@ -219,7 +232,7 @@ The completed project will answer questions such as:
 - [x] Design SQL analysis layer
 - [ ] Load dataset into SQL Server
 - [ ] Validate SQL results
-- [ ] Build analytical data model
+- [x] Design dimensional data model (star schema)\n- [ ] Load dimensions and fact table (ETL)\n- [ ] Reconcile warehouse data
 - [ ] Create Power BI dashboard
 - [ ] Document final findings
 - [ ] Add business recommendations
@@ -249,7 +262,7 @@ retail-sales-profitability-analysis/
 │   ├── 03_business_kpis.sql
 │   ├── 04_product_analysis.sql
 │   ├── 05_customer_analysis.sql
-│   ├── 06_profitability_analysis.sql
+│   ├── 06_profitability_analysis.sql\n│   ├── 07_create_star_schema.sql
 │   └── README.md
 │
 ├── powerbi/
@@ -262,6 +275,6 @@ retail-sales-profitability-analysis/
 
 ## Project Status
 
-**Current stage:** Python EDA completed → SQL analysis prepared → SQL execution next.
+**Current stage:** Python EDA completed → SQL analysis prepared → dimensional model designed → ETL implementation next.
 
 The project is intentionally being developed incrementally so that each analytical stage validates the previous one before the final dashboard and business recommendations are produced.
